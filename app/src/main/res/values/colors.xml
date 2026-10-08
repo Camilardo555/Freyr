@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Freyr Visual Design Palette -->
+    <color name="freyr_primary">#69042A</color>
+    <color name="freyr_primary_dark">#520320</color>
+    <color name="freyr_secondary">#E1CCD4</color>
+    <color name="freyr_secondary_light">#F7F1F4</color>
+    <color name="freyr_background">#FAF7F8</color>
+    <color name="freyr_surface">#FFFFFF</color>
+    <color name="freyr_text_primary">#2D1B22</color>
+    <color name="freyr_text_secondary">#802D1B22</color>
+    <color name="freyr_status_paid">#1B5E20</color>
+    <color name="freyr_status_paid_bg">#E8F5E9</color>
+</resources>

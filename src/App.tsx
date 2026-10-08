@@ -49,7 +49,7 @@ const AppContent: React.FC = () => {
       {/* Minimalist Footprint Footer */}
       <footer className="border-t border-[#E1CCD4]/60 py-6 bg-[#FAF7F8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#2D1B22]/50 gap-2">
-          <p>© {new Date().getFullYear()} Komorebi Finance · Clean Personal & Family Financial Ledger</p>
+          <p>© {new Date().getFullYear()} Freyr · Clean Personal & Family Financial Ledger</p>
           <p>Manual records only · No banking credentials required</p>
         </div>
       </footer>

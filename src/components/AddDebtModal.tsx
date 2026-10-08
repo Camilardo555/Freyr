@@ -165,13 +165,15 @@ export const AddDebtModal: React.FC = () => {
 
           {/* Debt Name */}
           <div>
-            <label className="block text-xs font-semibold text-[#2D1B22]/70 mb-1">
+            <label htmlFor="debt-name-input" className="block text-xs font-semibold text-[#2D1B22]/70 mb-1">
               Debt Name / Title
             </label>
             <div className="relative">
               <input
+                id="debt-name-input"
                 type="text"
                 required
+                autoFocus
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Laptop, Internet Bill, Home Appliance"
@@ -182,15 +184,17 @@ export const AddDebtModal: React.FC = () => {
 
           {/* Amount */}
           <div>
-            <label className="block text-xs font-semibold text-[#2D1B22]/70 mb-1">
+            <label htmlFor="debt-amount-input" className="block text-xs font-semibold text-[#2D1B22]/70 mb-1">
               Total Amount ($)
             </label>
             <div className="relative">
-              <span className="absolute left-3.5 top-2.5 text-[#2D1B22]/50 text-sm font-semibold">
+              <span className="absolute left-3.5 top-2.5 text-[#2D1B22]/50 text-sm font-semibold pointer-events-none">
                 $
               </span>
               <input
+                id="debt-amount-input"
                 type="number"
+                inputMode="decimal"
                 step="any"
                 min="0.01"
                 required

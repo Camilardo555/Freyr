@@ -48,10 +48,10 @@ export const Navbar: React.FC = () => {
               className="group flex items-center gap-2.5 text-left focus:outline-none"
             >
               <div className="w-8 h-8 rounded-lg bg-[#69042A] text-[#FAF7F8] flex items-center justify-center font-bold text-sm tracking-wider shadow-sm transition-transform group-hover:scale-105">
-                K
+                F
               </div>
               <span className="text-xl font-bold tracking-tight text-[#69042A]">
-                Komorebi
+                Freyr
               </span>
             </button>
           </div>

@@ -65,10 +65,10 @@ export const AuthView: React.FC = () => {
         {/* Brand Header */}
         <div className="text-center space-y-2">
           <div className="mx-auto w-12 h-12 rounded-2xl bg-[#69042A] text-white flex items-center justify-center font-bold text-2xl shadow-md">
-            K
+            F
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-[#69042A]">
-            Komorebi Finance
+            Freyr
           </h1>
           <p className="text-sm text-[#2D1B22]/70">
             Minimalist personal & family financial debt and payment tracker
