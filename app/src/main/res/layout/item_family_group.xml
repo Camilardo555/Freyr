@@ -34,8 +34,8 @@
                 android:id="@+id/tv_admin_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Admin"
-                android:textColor="@color/freyr_primary"
+                android:text="Administrador"
+                android:textColor="@color/freyr_secondary"
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:background="@drawable/bg_status_pending"
@@ -49,7 +49,7 @@
             android:id="@+id/tv_group_members_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2 members · 2 family debts"
+            android:text="2 miembros · 2 deudas familiares"
             android:textColor="@color/freyr_text_secondary"
             android:textSize="12sp"
             android:layout_marginTop="4dp" />
@@ -57,7 +57,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/freyr_secondary_light"
+            android:background="@color/freyr_border"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp" />
 
@@ -81,7 +81,7 @@
                     android:id="@+id/tv_group_total_debt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$470,000"
+                    android:text="$470.000"
                     android:textColor="@color/freyr_text_primary"
                     android:textSize="13sp"
                     android:textStyle="bold"
@@ -96,14 +96,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Paid"
+                    android:text="Pagado"
                     android:textColor="@color/freyr_text_secondary"
                     android:textSize="10sp" />
                 <TextView
                     android:id="@+id/tv_group_total_paid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$210,000"
+                    android:text="$210.000"
                     android:textColor="@color/freyr_status_paid"
                     android:textSize="13sp"
                     android:textStyle="bold"
@@ -118,15 +118,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Remaining"
+                    android:text="Pendiente"
                     android:textColor="@color/freyr_text_secondary"
                     android:textSize="10sp" />
                 <TextView
                     android:id="@+id/tv_group_total_remaining"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$260,000"
-                    android:textColor="@color/freyr_primary"
+                    android:text="$260.000"
+                    android:textColor="@color/freyr_secondary"
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:fontFamily="monospace" />

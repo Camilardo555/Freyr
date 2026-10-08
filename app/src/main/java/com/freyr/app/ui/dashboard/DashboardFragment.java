@@ -38,6 +38,12 @@ public class DashboardFragment extends Fragment {
     private TextView tvInviteActionTitle;
     private TextView tvInviteActionSub;
 
+    // Historial financiero completo (Requisito 6)
+    private TextView tvHistorialTotalDebido;
+    private TextView tvHistorialTotalPagado;
+    private TextView tvHistorialTotalPendiente;
+
+    // Resumen adicional
     private TextView tvTotalPendingAmount;
     private TextView tvPendingDebtsCount;
     private TextView tvPaidDebtsCount;
@@ -52,6 +58,7 @@ public class DashboardFragment extends Fragment {
     private List<Payment> allPayments = new ArrayList<>();
     private List<FamilyGroup> allGroups = new ArrayList<>();
     private List<Invitation> allInvitations = new ArrayList<>();
+    private List<User> allUsers = new ArrayList<>();
     private User currentUser;
 
     @Nullable
@@ -79,6 +86,11 @@ public class DashboardFragment extends Fragment {
         tvInviteActionTitle = view.findViewById(R.id.tv_invite_action_title);
         tvInviteActionSub = view.findViewById(R.id.tv_invite_action_sub);
 
+        // Historial Financiero
+        tvHistorialTotalDebido = view.findViewById(R.id.tv_historial_total_debido);
+        tvHistorialTotalPagado = view.findViewById(R.id.tv_historial_total_pagado);
+        tvHistorialTotalPendiente = view.findViewById(R.id.tv_historial_total_pendiente);
+
         tvTotalPendingAmount = view.findViewById(R.id.tv_total_pending_amount);
         tvPendingDebtsCount = view.findViewById(R.id.tv_pending_debts_count);
         tvPaidDebtsCount = view.findViewById(R.id.tv_paid_debts_count);
@@ -89,25 +101,25 @@ public class DashboardFragment extends Fragment {
     }
 
     private void setupListeners() {
-        // 1. Edit Profile
+        // 1. Editar Perfil
         cardEditProfile.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), EditProfileActivity.class);
             startActivity(intent);
         });
 
-        // 2. Add Debt
+        // 2. Añadir Deuda
         cardAddDebt.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), AddDebtActivity.class);
             startActivity(intent);
         });
 
-        // 3. Create Family Group
+        // 3. Crear Grupo Familiar
         cardCreateGroup.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), CreateFamilyGroupActivity.class);
             startActivity(intent);
         });
 
-        // 4. Accept Family Group Invitation
+        // 4. Ver Invitaciones
         cardAcceptInvite.setOnClickListener(v -> {
             if (getActivity() instanceof MainActivity) {
                 ((MainActivity) getActivity()).selectTab(R.id.nav_invitations);
@@ -139,11 +151,13 @@ public class DashboardFragment extends Fragment {
     private void observeData() {
         repository.getAllUsersLive().observe(getViewLifecycleOwner(), users -> {
             if (users != null) {
+                allUsers = users;
+                debtAdapter.setUsers(users);
                 String curId = repository.getCurrentUserId();
                 for (User u : users) {
                     if (u.getId().equals(curId)) {
                         currentUser = u;
-                        tvWelcomeName.setText("Hello, " + u.getFullName());
+                        tvWelcomeName.setText("Hola, " + u.getFullName());
                         break;
                     }
                 }
@@ -187,9 +201,9 @@ public class DashboardFragment extends Fragment {
                     }
                 }
                 if (pendingCount > 0) {
-                    tvInviteActionSub.setText(pendingCount + " invitation" + (pendingCount > 1 ? "s" : "") + " pending");
+                    tvInviteActionSub.setText(pendingCount + " invitación" + (pendingCount > 1 ? "es" : "") + " pendiente" + (pendingCount > 1 ? "s" : ""));
                 } else {
-                    tvInviteActionSub.setText("View pending invites");
+                    tvInviteActionSub.setText("Ver invitaciones pendientes");
                 }
             }
         });
@@ -219,7 +233,7 @@ public class DashboardFragment extends Fragment {
                 double remaining = Math.max(0.0, d.getAmount() - paid);
                 if (remaining > 0 && !"paid".equalsIgnoreCase(d.getStatus())) {
                     active.add(d);
-                    if (active.size() >= 3) break; // Top 3
+                    if (active.size() >= 3) break;
                 }
             }
         }
@@ -239,6 +253,8 @@ public class DashboardFragment extends Fragment {
 
         int pendingCount = 0;
         int paidCount = 0;
+        double totalDebido = 0.0;
+        double totalPagado = 0.0;
         double totalPending = 0.0;
 
         for (Debt d : allDebts) {
@@ -246,12 +262,16 @@ public class DashboardFragment extends Fragment {
                 || (d.getFamilyGroupId() != null && userGroupIds.contains(d.getFamilyGroupId()));
 
             if (isRelevant) {
+                totalDebido += d.getAmount();
+
                 double paid = 0.0;
                 for (Payment p : allPayments) {
                     if (p.getDebtId().equals(d.getId())) {
                         paid += p.getAmount();
                     }
                 }
+                totalPagado += paid;
+
                 double remaining = Math.max(0.0, d.getAmount() - paid);
                 if (remaining == 0.0 || "paid".equalsIgnoreCase(d.getStatus())) {
                     paidCount++;
@@ -282,6 +302,20 @@ public class DashboardFragment extends Fragment {
             }
         }
 
+        double totalPendiente = Math.max(0.0, totalDebido - totalPagado);
+
+        // Actualizar Historial Financiero Completo (Requisito 6)
+        if (tvHistorialTotalDebido != null) {
+            tvHistorialTotalDebido.setText(FreyrRepository.formatCurrency(totalDebido));
+        }
+        if (tvHistorialTotalPagado != null) {
+            tvHistorialTotalPagado.setText(FreyrRepository.formatCurrency(totalPagado));
+        }
+        if (tvHistorialTotalPendiente != null) {
+            tvHistorialTotalPendiente.setText(FreyrRepository.formatCurrency(totalPendiente));
+        }
+
+        // Resumen
         tvTotalPendingAmount.setText(FreyrRepository.formatCurrency(totalPending));
         tvPendingDebtsCount.setText(String.valueOf(pendingCount));
         tvPaidDebtsCount.setText(String.valueOf(paidCount));

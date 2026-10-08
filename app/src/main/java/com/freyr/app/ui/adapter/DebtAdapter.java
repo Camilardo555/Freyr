@@ -14,6 +14,7 @@ import com.freyr.app.R;
 import com.freyr.app.data.model.Debt;
 import com.freyr.app.data.model.FamilyGroup;
 import com.freyr.app.data.model.Payment;
+import com.freyr.app.data.model.User;
 import com.freyr.app.data.repository.FreyrRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class DebtAdapter extends RecyclerView.Adapter<DebtAdapter.DebtViewHolder
     private List<Debt> debts = new ArrayList<>();
     private List<Payment> allPayments = new ArrayList<>();
     private List<FamilyGroup> allGroups = new ArrayList<>();
+    private List<User> allUsers = new ArrayList<>();
     private final OnDebtClickListener listener;
 
     public DebtAdapter(Context context, OnDebtClickListener listener) {
@@ -51,6 +53,16 @@ public class DebtAdapter extends RecyclerView.Adapter<DebtAdapter.DebtViewHolder
         notifyDataSetChanged();
     }
 
+    /**
+     * Resuelve el problema donde al cambiar el nombre de un usuario en su perfil,
+     * no se reflejaba en las deudas existentes. Al vincular la lista viva de usuarios,
+     * siempre se busca dinámicamente el nombre más actualizado del usuario asignado.
+     */
+    public void setUsers(List<User> users) {
+        this.allUsers = users != null ? users : new ArrayList<>();
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public DebtViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -70,21 +82,38 @@ public class DebtAdapter extends RecyclerView.Adapter<DebtAdapter.DebtViewHolder
             holder.tvDesc.setVisibility(View.GONE);
         }
 
-        // Scope
+        // Ámbito y Responsable dinámico
+        StringBuilder scopeText = new StringBuilder();
         if (debt.getFamilyGroupId() != null) {
-            String groupName = "Family Group";
+            String groupName = "Grupo Familiar";
             for (FamilyGroup g : allGroups) {
                 if (g.getId().equals(debt.getFamilyGroupId())) {
                     groupName = g.getName();
                     break;
                 }
             }
-            holder.tvScope.setText("Family · " + groupName);
+            scopeText.append("Familia · ").append(groupName);
         } else {
-            holder.tvScope.setText("Personal Debt");
+            scopeText.append("Deuda Personal");
         }
 
-        // Calculate paid amount
+        // Buscar el nombre del usuario asignado dinámicamente desde allUsers
+        if (debt.getAssignedUserId() != null) {
+            String assignedName = null;
+            for (User u : allUsers) {
+                if (u.getId().equals(debt.getAssignedUserId())) {
+                    assignedName = u.getFullName();
+                    break;
+                }
+            }
+            if (assignedName != null) {
+                scopeText.append(" · Responsable: ").append(assignedName);
+            }
+        }
+
+        holder.tvScope.setText(scopeText.toString());
+
+        // Calcular monto pagado
         double paid = 0.0;
         for (Payment p : allPayments) {
             if (p.getDebtId().equals(debt.getId())) {
@@ -99,14 +128,14 @@ public class DebtAdapter extends RecyclerView.Adapter<DebtAdapter.DebtViewHolder
         holder.tvRemaining.setText(FreyrRepository.formatCurrency(remaining));
 
         if (isPaid) {
-            holder.tvStatus.setText("Paid");
+            holder.tvStatus.setText("Pagado");
             holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.freyr_status_paid));
             holder.tvStatus.setBackgroundResource(R.drawable.bg_status_paid);
             holder.btnPay.setVisibility(View.GONE);
             holder.pbProgress.setProgress(100);
         } else {
-            holder.tvStatus.setText("Pending");
-            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.freyr_primary));
+            holder.tvStatus.setText("Pendiente");
+            holder.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.freyr_secondary));
             holder.tvStatus.setBackgroundResource(R.drawable.bg_status_pending);
             holder.btnPay.setVisibility(View.VISIBLE);
             int percent = debt.getAmount() > 0 ? (int) Math.min(100, (paid / debt.getAmount()) * 100) : 0;

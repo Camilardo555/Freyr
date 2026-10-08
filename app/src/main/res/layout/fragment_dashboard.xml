@@ -12,13 +12,13 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Welcome Banner -->
+        <!-- Banner de bienvenida -->
         <TextView
             android:id="@+id/tv_welcome_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Financial Overview"
-            android:textColor="@color/freyr_primary"
+            android:text="Resumen Financiero"
+            android:textColor="@color/freyr_secondary"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -26,31 +26,31 @@
             android:id="@+id/tv_welcome_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome back. Here is your current financial posture."
+            android:text="Bienvenido a Freyr. Este es el estado general de tus finanzas."
             android:textColor="@color/freyr_text_secondary"
             android:textSize="13sp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="18dp" />
 
-        <!-- 4 MAIN OPTIONS (Explicitly requested by user) -->
+        <!-- 4 ACCIONES PRINCIPALES -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MAIN ACTIONS"
+            android:text="ACCIONES PRINCIPALES"
             android:textColor="@color/freyr_text_secondary"
             android:textSize="11sp"
             android:textStyle="bold"
             android:letterSpacing="0.05"
             android:layout_marginBottom="8dp" />
 
-        <!-- Action Row 1: 1. Edit Profile & 2. Add Debt -->
+        <!-- Fila 1: 1. Editar perfil & 2. Añadir deuda -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
 
-            <!-- 1. Edit Profile -->
+            <!-- 1. Editar Perfil -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_action_edit_profile"
                 android:layout_width="0dp"
@@ -72,7 +72,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1. Edit Profile"
+                        android:text="1. Editar perfil"
                         android:textColor="@color/freyr_text_primary"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -80,14 +80,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Credentials &amp; info"
+                        android:text="Credenciales y datos"
                         android:textColor="@color/freyr_text_secondary"
                         android:textSize="11sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 2. Add Debt (Highlighted in Primary) -->
+            <!-- 2. Añadir Deuda (Destacado en Primario) -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_action_add_debt"
                 android:layout_width="0dp"
@@ -109,7 +109,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2. Add Debt"
+                        android:text="2. Añadir deuda"
                         android:textColor="#FFFFFF"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -117,7 +117,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Personal or family"
+                        android:text="Personal o familiar"
                         android:textColor="@color/freyr_secondary"
                         android:textSize="11sp"
                         android:layout_marginTop="2dp" />
@@ -125,14 +125,14 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <!-- Action Row 2: 3. Create Family Group & 4. Accept Family Invitation -->
+        <!-- Fila 2: 3. Crear Grupo Familiar & 4. Invitaciones -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="20dp">
 
-            <!-- 3. Create Family Group -->
+            <!-- 3. Crear Grupo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_action_create_group"
                 android:layout_width="0dp"
@@ -154,7 +154,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3. Create Group"
+                        android:text="3. Crear grupo"
                         android:textColor="@color/freyr_text_primary"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -162,14 +162,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shared expense pool"
+                        android:text="Gastos compartidos"
                         android:textColor="@color/freyr_text_secondary"
                         android:textSize="11sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 4. Accept Family Group Invitation -->
+            <!-- 4. Invitaciones -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_action_accept_invite"
                 android:layout_width="0dp"
@@ -192,7 +192,7 @@
                         android:id="@+id/tv_invite_action_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4. Invitations"
+                        android:text="4. Invitaciones"
                         android:textColor="@color/freyr_text_primary"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -201,7 +201,7 @@
                         android:id="@+id/tv_invite_action_sub"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="View pending invites"
+                        android:text="Ver invitaciones pendientes"
                         android:textColor="@color/freyr_text_secondary"
                         android:textSize="11sp"
                         android:layout_marginTop="2dp" />
@@ -209,18 +209,150 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <!-- FINANCIAL ACTIVITY SUMMARY -->
+        <!-- SECCIÓN NUEVA: HISTORIAL FINANCIERO COMPLETO (REQUISITO 6) -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FINANCIAL SUMMARY"
-            android:textColor="@color/freyr_text_secondary"
-            android:textSize="11sp"
+            android:text="HISTORIAL FINANCIERO"
+            android:textColor="@color/freyr_secondary"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:letterSpacing="0.05"
             android:layout_marginBottom="8dp" />
 
-        <!-- Total Pending Amount (Highlight Hero Card) -->
+        <!-- Tarjeta Principal de Historial Financiero -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/freyr_surface"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resumen global de actividad financiera"
+                    android:textColor="@color/freyr_text_secondary"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="14dp" />
+
+                <!-- Grid de los 3 valores requeridos: Total debido, Total pagado, Total pendiente -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+
+                    <!-- Total debido -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total debido"
+                            android:textColor="@color/freyr_text_secondary"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_historial_total_debido"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$0"
+                            android:textColor="@color/freyr_text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Separador vertical sutil -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="36dp"
+                        android:background="@color/freyr_border"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="6dp" />
+
+                    <!-- Total pagado -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total pagado"
+                            android:textColor="@color/freyr_text_secondary"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_historial_total_pagado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$0"
+                            android:textColor="@color/freyr_status_paid"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Separador vertical sutil -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="36dp"
+                        android:background="@color/freyr_border"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="6dp" />
+
+                    <!-- Total pendiente -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total pendiente"
+                            android:textColor="@color/freyr_text_secondary"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_historial_total_pendiente"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$0"
+                            android:textColor="@color/freyr_secondary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="monospace"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Saldo Pendiente Destacado -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -238,7 +370,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TOTAL AMOUNT PENDING"
+                    android:text="MONTO TOTAL PENDIENTE"
                     android:textColor="@color/freyr_secondary"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -265,13 +397,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current outstanding balance across your debts"
+                    android:text="Saldo pendiente actual en tus deudas"
                     android:textColor="@color/freyr_secondary"
                     android:textSize="11sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Summary Grid: Pending Debts & Paid Debts -->
+        <!-- Cuadrícula: Deudas Pendientes y Pagadas -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -296,7 +428,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PENDING DEBTS"
+                        android:text="DEUDAS PENDIENTES"
                         android:textColor="@color/freyr_text_secondary"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -306,7 +438,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="@color/freyr_primary"
+                        android:textColor="@color/freyr_secondary"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:fontFamily="monospace"
@@ -332,7 +464,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PAID DEBTS"
+                        android:text="DEUDAS SALDADAS"
                         android:textColor="@color/freyr_text_secondary"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -351,7 +483,7 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <!-- Summary Grid: Personal Payments & Family Debts -->
+        <!-- Cuadrícula: Pagos personales y Deudas familiares pendientes -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -376,7 +508,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PERSONAL PAYMENTS"
+                        android:text="PAGOS PERSONALES"
                         android:textColor="@color/freyr_text_secondary"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -412,7 +544,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FAMILY DEBTS PENDING"
+                        android:text="DEUDA FAMILIAR PENDIENTE"
                         android:textColor="@color/freyr_text_secondary"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -431,12 +563,12 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <!-- Active Debts Section Header -->
+        <!-- Cabecera de Deudas Activas -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACTIVE PENDING DEBTS"
-            android:textColor="@color/freyr_text_secondary"
+            android:text="DEUDAS ACTIVAS PENDIENTES"
+            android:textColor="@color/freyr_secondary"
             android:textSize="11sp"
             android:textStyle="bold"
             android:letterSpacing="0.05"

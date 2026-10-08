@@ -1,4 +1,30 @@
 <resources>
     <string name="app_name">Freyr</string>
-    <string name="app_tagline">Minimalist Personal &amp; Family Financial Ledger</string>
+    <string name="app_tagline">Gestión Financiera Personal y Familiar</string>
+
+    <!-- Navegación y Acciones Principales -->
+    <string name="nav_dashboard">Inicio</string>
+    <string name="nav_personal">Personal</string>
+    <string name="nav_family">Familia</string>
+    <string name="nav_invitations">Invitaciones</string>
+
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_add_debt">Añadir deuda</string>
+    <string name="btn_add_payment">Añadir pago</string>
+    <string name="btn_edit_profile">Editar perfil</string>
+    <string name="btn_create_group">Crear grupo familiar</string>
+
+    <!-- Resumen e Historial Financiero -->
+    <string name="historial_financiero">Historial financiero</string>
+    <string name="resumen_financiero">Resumen financiero</string>
+    <string name="total_debido">Total debido</string>
+    <string name="total_pagado">Total pagado</string>
+    <string name="total_pendiente">Total pendiente</string>
+
+    <!-- Estados -->
+    <string name="status_pending">Pendiente</string>
+    <string name="status_paid">Pagado</string>
 </resources>
