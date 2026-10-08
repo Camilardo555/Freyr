@@ -1,0 +1,6 @@
+{
+  "name": "Komorebi Finance",
+  "description": "Minimalist and modern personal and family debt and payment management tool.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
